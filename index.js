@@ -33,7 +33,7 @@ app.get('/signup', function(req, res){
 });
 
 app.get('/things/:name/:id', function(req, res){
-    res.send('id: ' + req.params.id + ' and name: ' + req.params.name+" and also practicing with GitHub - NB1 Branch");
+    res.send('id: ' + req.params.id + ' and name: ' + req.params.name+" there should be nothing here");
 });
 
 app.post('/post-times-two', function(req, res){
