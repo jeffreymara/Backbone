@@ -1,0 +1,129 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		link(rel='icon', href='../../favicon.ico')
+		title #{name}
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(rel='stylesheet', href='css/index.css')
+	body
+		// Fixed navbar
+		nav.navbar.navbar-default.navbar-fixed-top
+			.container
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') #{name}
+				#navbar.navbar-collapse.collapse
+					ul.nav.navbar-nav
+						li.active
+							a(href='#') Home
+						li
+							a(href='#about') About
+						li
+							a(href='#contact') Contact
+						li.dropdown
+							a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+								| Dropdown 
+								span.caret
+							ul.dropdown-menu
+								li
+									a(href='#') Action
+								li
+									a(href='#') Another action
+								li
+									a(href='#') Something else here
+								li.divider(role='separator')
+								li.dropdown-header Nav header
+								li
+									a(href='#') Separated link
+								li
+									a(href='#') One more separated link
+				// /.nav-collapse
+		.container.theme-showcase(role='main')
+			// Main jumbotron for a primary marketing message or call to action
+			.jumbotron
+				h1 #{name}
+				p
+					| This is a Node.js website built on Express utilizing Pug, Bootstrap, Stylus, CoffeeScript, and Backbone.js.
+			
+			div.signup
+				div.alert.alert-success(role="alert") 
+					b Create an account! 
+					span Creating an account will allow you to sign in
+				div.alert.alert-warning(role="alert") 
+					b node index.js 
+					span Is the command to run a js script in node
+					
+				div.alert.alert-info(role="alert") 
+					b Better Yet: 
+					span 
+						During development the best way to restart server for seeing changes made is to use nodemon <br />
+						| npm install nodemon -g  <br />
+						| nodemon [your app name]  <br />
+						| nodemon will watch the files in the directory that nodemon was started, and if they change, it will automatically restart your node application. <br />
+						| Check nodemon git repo: https://github.com/remy/nodemon
+					
+			div.info
+				ul
+					li.title Stylus Compilation
+					li.text To compile a stylus folder into a css folder: stylus stylus_folder_path --out css_folder_path
+					
+					li.title CoffeeScript Compilation
+					li.text coffee --output js_folder_path --compile coffee_folder_path
+			
+			div.btn-group(role="group")
+				button(type="button").btn.btn-default Create an Account
+				button(type="button").btn.btn-default Log In
+				
+			div.get_id
+				get ID is: #{user_id}
+			
+			form.times_two
+				div Ajax Form to Multiply by 2
+				input(type="text",placeholder="Provide a number",name="number")
+				input(type="submit",value="x2")
+				div.alert.alert-warning(role="alert")  
+					span Please enter a valid number.
+				
+			div#backbone
+				form#theform
+					.input-group
+						input#article-title.form-control(type='text', placeholder='Title of the Article', aria-describedby='basic-addon2')
+						span#basic-addon2.input-group-addon Title
+					.input-group
+						input#article-url.form-control(type='text', placeholder='URL of the Article', aria-describedby='basic-addon2')
+						span#basic-addon2.input-group-addon www.example.com
+					input(type='submit')
+			
+		// Placed at the end of the document so the pages load faster
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js")
+		script(type="text/template")#article-template
+			div.media
+				div.media-left
+					a(href="<%= url %>",target="_blank")
+						img.media-object(src!="<%= image_src %>",alt!="<%= title %>",height="64px",width="96px")
+		
+	  
+				div.media-body
+					a(href="<%= url %>",target="_blank")
+						h4.media-heading <%= title %>
+		
+					<%= description %>
+					br
+					div Views: <%= views %>
+					div <%= likes %> 
+						span.glyphicon.glyphicon-menu-up
+					div.delete Delete
+		script(src="js/backbone.js")
+		script(src="js/post.js")
